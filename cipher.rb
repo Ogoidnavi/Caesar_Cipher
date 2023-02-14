@@ -1,0 +1,23 @@
+def caesar_cipher(string, shift, cipher = '')
+  string.each_char do |char|
+    char_code = char.ord
+
+    char_ascii = case char_code
+    when 65..90 then
+      char.ord + shift > 90 ? char.ord + shift - 26 : char.ord + shift
+    when 97..122 then
+      #if (char.ord + shift) > 122
+      #  char = char.ord + shift - 26
+      #else 
+      # char = char.ord + shift
+      #end
+      char.ord + shift > 122 ? char.ord + shift - 26 : char.ord + shift
+    else
+      char.ord
+    end
+  cipher += char_ascii.chr
+  end
+  p cipher
+end
+
+caesar_cipher("What a string!", 5)
