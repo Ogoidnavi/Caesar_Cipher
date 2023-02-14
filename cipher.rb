@@ -4,14 +4,21 @@ def caesar_cipher(string, shift, cipher = '')
 
     char_ascii = case char_code
     when 65..90 then
-      char.ord + shift > 90 ? char.ord + shift - 26 : char.ord + shift
+      if char.ord + shift > 90
+        char.ord + shift - 26
+      elsif char.ord + shift < 65
+        char.ord + shift + 26
+      else
+        char.ord + shift
+      end
     when 97..122 then
-      #if (char.ord + shift) > 122
-      #  char = char.ord + shift - 26
-      #else 
-      # char = char.ord + shift
-      #end
-      char.ord + shift > 122 ? char.ord + shift - 26 : char.ord + shift
+      if char.ord + shift > 122
+        char.ord + shift - 26
+      elsif char.ord + shift < 97
+        char.ord + shift + 26
+      else
+        char.ord + shift
+      end
     else
       char.ord
     end
@@ -20,4 +27,4 @@ def caesar_cipher(string, shift, cipher = '')
   p cipher
 end
 
-caesar_cipher("What a string!", 5)
+caesar_cipher("What a string!", -5)
